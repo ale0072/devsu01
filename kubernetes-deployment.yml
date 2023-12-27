@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: demo-devops-python-deployment
+  namespace: devsutest
 spec:
   replicas: 2
   selector:
@@ -81,7 +82,6 @@ metadata:
   name: demo-devops-python-ingress
 spec:
   rules:
-  - host: your-app.example.com
     http:
       paths:
       - path: /
