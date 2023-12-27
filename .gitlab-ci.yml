@@ -34,6 +34,7 @@ build_image:
 
 deploy:
   stage: deploy
+  image: google/cloud-sdk:alpine
   before_script:
     - echo $GCLOUD_KEY -d > ${HOME}/gcloud-service-key.json
     - gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
