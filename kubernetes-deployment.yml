@@ -102,7 +102,7 @@ spec:
               number: 80
 
 ---
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: demo-devops-python-hpa
