@@ -28,6 +28,7 @@ EXPOSE $PORT
 HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost:$PORT/ || exit 1
 
 # Install curl and lsb-release, add the Google Cloud SDK repository, and install the Google Cloud SDK
+USER root
 RUN apt-get update && \
     apt-get install -y curl lsb-release && \
     export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
@@ -37,5 +38,6 @@ RUN apt-get update && \
     apt-get install -y google-cloud-sdk
 
 # Default params to run the app
+USER devsuuser
 CMD ["gunicorn", "-b", "0.0.0.0:$PORT", "manage:app"]
 
