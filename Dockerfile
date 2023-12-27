@@ -20,8 +20,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 #copy app files && run migrations
 COPY manage.py .
 COPY / ./
-RUN python manage.py makemigrations
-RUN python manage.py migrate
 
 #expose the app to a port
 EXPOSE $PORT
