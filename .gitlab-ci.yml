@@ -9,7 +9,7 @@ include:
 
 variables:
   IMAGE_NAME: ale0072/devsu
-  IMAGE_TAG: python-app-01
+  IMAGE_TAG: python-app-1
 
 run_tests:
   stage: test
