@@ -36,7 +36,7 @@ deploy:
   stage: deploy
   image: google/cloud-sdk:alpine
   before_script:
-    - echo $GCLOUD_KEY -d > ${HOME}/gcloud-service-key.json
+    - echo "$GCLOUD_KEY" | base64 -d > ${HOME}/gcloud-service-key.json
     - gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
     - gcloud container clusters get-credentials $GKE_CLUSTER_NAME --zone $GKE_ZONE --project $GKE_PROJECT_ID
     - kubectl config set-context $(kubectl config current-context) --namespace=$KUBE_NAMESPACE
