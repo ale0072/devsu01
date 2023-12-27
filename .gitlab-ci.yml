@@ -8,12 +8,8 @@ include:
 - template: Jobs/Dependency-Scanning.gitlab-ci.yml 
 
 variables:
-  IMAGE_NAME: devsu/test-example01
-  IMAGE_TAG: python-app-1.0
-  GKE_CLUSTER_NAME: $GKE_CLUSTER_NAME
-  GKE_PROJECT_ID: $GKE_PROJECT_ID
-  GKE_ZONE: $GKE_ZONE
-  KUBE_NAMESPACE: $KUBE_NAMESPACE
+  IMAGE_NAME: ale0072/devsu
+  IMAGE_TAG: python-app-1
 
 run_tests:
   stage: test
