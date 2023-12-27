@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: demo-devops-python
-        image: ale0072/devsu:python-app-1
+        image: devsu/test-example-01:python-app-1.0
         env:
         - name: DJANGO_SECRET_KEY
           valueFrom:
@@ -34,18 +34,18 @@ spec:
               key: DB_PASSWORD
         ports:
         - containerPort: 8000
-      livenessProbe:
-        httpGet:
-          path: /healthz
-          port: 8000
-        initialDelaySeconds: 3
-        periodSeconds: 3
-      readinessProbe:
-        httpGet:
-          path: /readiness
-          port: 8000
-        initialDelaySeconds: 5
-        periodSeconds: 3
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8000
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /readiness
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 3
 
 ---
 apiVersion: v1
@@ -90,7 +90,8 @@ metadata:
   namespace: devsutest
 spec:
   rules:
-  - http:
+  - host: your-ingress-host
+    http:
       paths:
       - path: /
         pathType: Prefix
