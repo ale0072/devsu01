@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: demo-devops-python
-        image: devsu/test-example-01:python-app-1.0
+        image: ale0072/devsu:python-app-1
         env:
         - name: DJANGO_SECRET_KEY
           valueFrom:
@@ -59,7 +59,7 @@ spec:
     port: 80
     targetPort: 8000
   type: ClusterIP
- --- 
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
