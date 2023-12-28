@@ -18,8 +18,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY manage.py .
 COPY / ./
 
-# create directories for static and media
-RUN mkdir /static /media
+# create directories for static and media if they don't exist
+RUN mkdir -p /static /media
 
 # grant permissions to the user
 RUN chown -R devsuuser:devsuuser /static /media
@@ -39,6 +39,7 @@ HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost:$PORT/ || ex
 
 # default params to run the app
 CMD ["gunicorn", "-b", "0.0.0.0:$PORT", "manage:app"]
+
 
 
 
