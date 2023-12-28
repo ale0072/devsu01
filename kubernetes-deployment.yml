@@ -83,25 +83,6 @@ data:
   DJANGO_SECRET_KEY: ZGphbmdvLWluc2VjdXJlLXdjMmkyKjZeMTckOSF1Kyh1NjZAcV9yZykrK24xeC1eKDAtJDN5ejJmKG49Xy1vKjc9
 
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: demo-devops-python-ingress
-  namespace: default
-spec:
-  rules:
-  - host: 34.138.199.58
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: demo-devops-python-service
-            port:
-              number: 80
-
----
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
