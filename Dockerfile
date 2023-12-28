@@ -1,4 +1,4 @@
-#official docker python image
+# official docker python image
 FROM python:3.11-bullseye
 
 # environment variables
@@ -18,27 +18,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY manage.py .
 COPY / ./
 
-# create directories for static and media if they don't exist
-RUN mkdir -p /static /media
-
-# grant permissions to the user
-RUN chown -R devsuuser:devsuuser /static /media
 
 # switch back to the non-root user
 USER devsuuser
 
 # run migrations
-RUN python manage.py makemigrations
-RUN python manage.py migrate --noinput
+CMD ["sh", "-c", "python manage.py makemigrations && python manage.py migrate && gunicorn -b 0.0.0.0:$PORT manage:app"]
 
-# expose the app to a port
-EXPOSE $PORT
-
-# defined healthcheck
-HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost:$PORT/ || exit 1
-
-# default params to run the app
-CMD ["gunicorn", "-b", "0.0.0.0:$PORT", "manage:app"]
 
 
 
