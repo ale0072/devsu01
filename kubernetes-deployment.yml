@@ -90,7 +90,7 @@ metadata:
   namespace: devsutest
 spec:
   rules:
-  - host: your-ingress-host
+  - host: 35.190.129.5
     http:
       paths:
       - path: /
