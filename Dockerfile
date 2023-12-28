@@ -1,30 +1,28 @@
-# official docker python image
-FROM python:3.11-bullseye
+# Use an official Python runtime as a parent image
+FROM python:3.11.3
 
-# environment variables
-ENV PORT=8000
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-# non-root user creation
-RUN adduser --disabled-password devsuuser
+# Set the working directory to /app
+WORKDIR /app
 
-# set the working directory
-WORKDIR /
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-# copy requirements and install
-COPY requirements.txt .
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# copy app files
-COPY manage.py .
-COPY / ./
+# Run database migrations
+RUN python manage.py makemigrations
+RUN python manage.py migrate
 
+# Expose the port that Django runs on
+EXPOSE 8000
 
-# switch back to the non-root user
-USER devsuuser
-
-# run migrations
-CMD ["sh", "-c", "python manage.py makemigrations && python manage.py migrate && gunicorn -b 0.0.0.0:$PORT manage:app"]
-
+# Start the Django development server
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 
 
