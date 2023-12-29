@@ -22,7 +22,7 @@ spec:
         - name: DJANGO_SECRET_KEY
           valueFrom:
             secretKeyRef:
-              name: my-app-secrets
+              name: demo-devops-python-secret
               key: DJANGO_SECRET_KEY
 ---
 apiVersion: v1
