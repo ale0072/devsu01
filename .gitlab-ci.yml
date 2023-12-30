@@ -35,7 +35,7 @@ build_image:
 deploy:
   stage: deploy
   image: docker:20.10.16
-    services:
+  services:
     - docker:20.10.16-dind
   script:
     - apt-get update
@@ -43,6 +43,6 @@ deploy:
     - curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     - chmod +x minikube-linux-amd64
     - mv minikube-linux-amd64 /usr/local/bin/minikube
-    - minikube start --driver=virtualbox
+    - minikube start --driver=docker
     - kubectl apply -f kubernetes-deployment.yml
 
