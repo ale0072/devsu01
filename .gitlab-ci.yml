@@ -44,7 +44,6 @@ deploy:
     - curl -s https://www.virtualbox.org/download/oracle_vbox_2016.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/virtualbox.gpg
     - apt-get update
     - apt-get install -y virtualbox-6.1
-    - modprobe vboxdrv
     - minikube start --driver=virtualbox
     - kubectl apply -f kubernetes-deployment.yml
 
