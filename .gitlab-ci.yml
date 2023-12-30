@@ -9,7 +9,7 @@ include:
 
 variables:
   IMAGE_NAME: ale0072/devsu
-  IMAGE_TAG: python-app-2
+  IMAGE_TAG: python-app-1
 
 run_tests:
   stage: test
@@ -34,12 +34,9 @@ build_image:
 
 deploy:
   stage: deploy
-  image: google/cloud-sdk:alpine
-  before_script:
-    - echo "$GCLOUD_KEY" | base64 -d > ${HOME}/gcloud-service-key.json
-    - gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
-    - gcloud components install kubectl
-    - gcloud container clusters get-credentials $GKE_CLUSTER_NAME --zone $GKE_ZONE --project $GKE_PROJECT_ID
-    - kubectl config set-context $(kubectl config current-context) --namespace=$KUBE_NAMESPACE
   script:
+    - apk add --update curl
+    - curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    - install minikube-linux-amd64 /usr/local/bin/minikube
+    - minikube start --driver=virtualbox
     - kubectl apply -f kubernetes-deployment.yml
