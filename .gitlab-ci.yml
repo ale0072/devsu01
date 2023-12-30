@@ -40,7 +40,6 @@ deploy:
     - curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     - chmod +x minikube-linux-amd64
     - mv minikube-linux-amd64 /usr/local/bin/minikube
-    - add-apt-repository multiverse
     - wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
     - sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" > /etc/apt/sources.list.d/virtualbox.list'
     - apt-get update
