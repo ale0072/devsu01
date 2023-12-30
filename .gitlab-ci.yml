@@ -44,7 +44,10 @@ deploy:
         exit' &&
         minikube start --driver=docker &&
         kubectl apply -f kubernetes-deployment.yml &&
-        minikube tunnel"
+        kubectl expose deployment demo-devops-python-deployment --type=NodePort --port=80 &&
+        NODE_PORT=\$(kubectl get svc demo-devops-python-deployment -o jsonpath='{.spec.ports[0].nodePort}') &&
+        echo 'NodePort: '\$NODE_PORT
+    - timeout 10m minikube tunnel"
 
         
         
