@@ -36,9 +36,13 @@ deploy:
   stage: deploy
   script:
     - apt-get update
-    - apt-get install -y curl virtualbox-6.1
+    - apt-get install -y curl
     - curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     - chmod +x minikube-linux-amd64
     - mv minikube-linux-amd64 /usr/local/bin/minikube
+    - echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bookworm contrib" | tee /etc/apt/sources.list.d/virtualbox.list
+    - curl -s https://www.virtualbox.org/download/oracle_vbox_2016.asc | apt-key add -
+    - apt-get update
+    - apt-get install -y virtualbox-6.1
     - minikube start --driver=virtualbox
     - kubectl apply -f kubernetes-deployment.yml
