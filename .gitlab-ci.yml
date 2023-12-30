@@ -35,23 +35,8 @@ build_image:
 deploy:
   stage: deploy
   image: ubuntu:20.04
-  script:
-    - apt-get update
-    - apt-get install -y curl 
-    - curl -fsSL https://get.docker.com -o get-docker.sh
-    - sh get-docker.sh
-    - rm get-docker.sh
-    - chmod +x /usr/local/bin/docker
-    - curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-    - chmod +x minikube-linux-amd64
-    - mv minikube-linux-amd64 /usr/local/bin/minikube
-    - minikube start --driver=docker
-    - kubectl apply -f kubernetes-deployment.yml
-
-
-deploy:
-  stage: deploy
-  image: ubuntu:20.04
+  services:
+    - docker:20.10.16-dind
   script:
     - apt-get update
     - apt-get install -y curl 
@@ -63,7 +48,6 @@ deploy:
     - curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     - chmod +x minikube-linux-amd64
     - mv minikube-linux-amd64 /usr/local/bin/minikube
-    - systemctl start docker
     - minikube start --driver=docker
     - kubectl apply -f kubernetes-deployment.yml
 
