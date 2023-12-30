@@ -41,9 +41,11 @@ deploy:
         sudo su -c '
         docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
         docker pull $IMAGE_NAME:$IMAGE_TAG &&
+        exit' &&
         minikube start --driver=docker &&
         kubectl apply -f kubernetes-deployment.yml &&
-        minikube tunnel'" 
+        minikube tunnel"
+
         
         
 
