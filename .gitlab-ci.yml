@@ -37,6 +37,7 @@ deploy:
   script:
     - apt-get update
     - apt-get install -y curl libvirt-clients libvirt-daemon-system
+    - usermod -aG libvirt $USER
     - curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     - chmod +x minikube-linux-amd64
     - mv minikube-linux-amd64 /usr/local/bin/minikube
