@@ -40,9 +40,11 @@ deploy:
     - curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     - chmod +x minikube-linux-amd64
     - mv minikube-linux-amd64 /usr/local/bin/minikube
-    - wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-    - sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" > /etc/apt/sources.list.d/virtualbox.list'
+    - echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bookworm contrib" | tee /etc/apt/sources.list.d/virtualbox.list
+    - curl -s https://www.virtualbox.org/download/oracle_vbox_2016.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/virtualbox.gpg
     - apt-get update
     - apt-get install -y virtualbox-6.1
+    - modprobe vboxdrv
     - minikube start --driver=virtualbox
     - kubectl apply -f kubernetes-deployment.yml
+
