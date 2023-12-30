@@ -40,10 +40,10 @@ deploy:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@ec2-18-234-107-251.compute-1.amazonaws.com "
         sudo su -c '
         docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
-        docker pull $IMAGE_NAME:$IMAGE_TAG' &&
+        docker pull $IMAGE_NAME:$IMAGE_TAG &&
         minikube start --driver=docker &&
         kubectl apply -f kubernetes-deployment.yml &&
-        minikube tunnel" 
+        minikube tunnel'" 
         
         
 
