@@ -34,18 +34,14 @@ build_image:
 
 deploy:
   stage: deploy
+  image: docker:20.10.16
   script:
     - apt-get update
     - apt-get install -y curl 
     - curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     - chmod +x minikube-linux-amd64
     - mv minikube-linux-amd64 /usr/local/bin/minikube
-    - echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bookworm contrib" | tee /etc/apt/sources.list.d/virtualbox.list
-    - curl -s https://www.virtualbox.org/download/oracle_vbox_2016.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/virtualbox.gpg
-    - apt-get update
-    - apt-get install -y virtualbox-6.1
-    - apt-get install -y linux-headers-$(uname -r) || apt-get install -y linux-headers-generic  # Try generic headers as a fallback
-    - /sbin/vboxconfig
+    - minikube start --driver=docker
     - minikube start --driver=virtualbox
     - kubectl apply -f kubernetes-deployment.yml
 
