@@ -44,7 +44,7 @@ deploy:
     - curl -s https://www.virtualbox.org/download/oracle_vbox_2016.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/virtualbox.gpg
     - apt-get update
     - apt-get install -y virtualbox-6.1
-    - sudo apt-get install -y linux-headers-$(uname -r)  # Install Linux kernel headers
+    - apt-get install -y linux-headers-$(uname -r)  # Install Linux kernel headers
     - /sbin/vboxconfig
     - minikube start --driver=virtualbox
     - kubectl apply -f kubernetes-deployment.yml
