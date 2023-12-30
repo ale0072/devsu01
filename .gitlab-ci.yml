@@ -9,7 +9,7 @@ include:
 
 variables:
   IMAGE_NAME: ale0072/devsu
-  IMAGE_TAG: python-app-2
+  IMAGE_TAG: python-app-1
 
 run_tests:
   stage: test
@@ -37,7 +37,7 @@ deploy:
   before_script:
     - chmod 400 $SSH_KEY
   script:
-    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@ec2-18-234-107-251.compute-1.amazonaws.com "
+    - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@ec2-18-204-9-98.compute-1.amazonaws.com "
         sudo su -c '
         docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
         docker pull $IMAGE_NAME:$IMAGE_TAG &&
