@@ -1,0 +1,194 @@
+[0KRunning with gitlab-runner 16.6.0~beta.105.gd2263193 (d2263193)[0;m
+[0K  on blue-1.saas-linux-small.runners-manager.gitlab.com/default j1aLDqxS, system ID: s_ccdc2f364be8[0;m
+[0K  feature flags: FF_USE_IMPROVED_URL_MASKING:true[0;m
+section_start:1703961691:prepare_executor[0K[0K[36;1mPreparing the "docker+machine" executor[0;m[0;m
+[0KUsing Docker executor with image docker:20.10.16 ...[0;m
+[0KStarting service docker:20.10.16-dind ...[0;m
+[0KPulling docker image docker:20.10.16-dind ...[0;m
+[0KUsing docker image sha256:1f6c0346b90562fa44a32011666df7a7f413ee260a0510b52ca974bef4d50f15 for docker:20.10.16-dind with digest docker@sha256:56ef400f08be1ca817d7e2cfdb43803786ab28d84c8167e8590622d9bab5b415 ...[0;m
+[0KWaiting for services to be up and running (timeout 30 seconds)...[0;m
+[0KPulling docker image docker:20.10.16 ...[0;m
+[0KUsing docker image sha256:2a153cb5c7c52610ceb46876231f1c7ab8d2a0926aaeb5283994ef3d6f78def9 for docker:20.10.16 with digest docker@sha256:5bc07a93c9b28e57a58d57fbcf437d1551ff80ae33b4274fb60a1ade2d6c9da4 ...[0;m
+section_end:1703961708:prepare_executor[0Ksection_start:1703961708:prepare_script[0K[0K[36;1mPreparing environment[0;m[0;m
+Running on runner-j1aldqxs-project-53368635-concurrent-0 via runner-j1aldqxs-s-l-s-amd64-1703961621-8cab5e83...
+section_end:1703961708:prepare_script[0Ksection_start:1703961708:get_sources[0K[0K[36;1mGetting source from Git repository[0;m[0;m
+[32;1mFetching changes with git depth set to 20...[0;m
+Initialized empty Git repository in /builds/ale0072/devsutest01/.git/
+[32;1mCreated fresh repository.[0;m
+[32;1mChecking out 20220591 as detached HEAD (ref is master)...[0;m
+
+[32;1mSkipping Git submodules setup[0;m
+[32;1m$ git remote set-url origin "${CI_REPOSITORY_URL}"[0;m
+section_end:1703961709:get_sources[0Ksection_start:1703961709:step_script[0K[0K[36;1mExecuting "step_script" stage of the job script[0;m[0;m
+[0KUsing docker image sha256:2a153cb5c7c52610ceb46876231f1c7ab8d2a0926aaeb5283994ef3d6f78def9 for docker:20.10.16 with digest docker@sha256:5bc07a93c9b28e57a58d57fbcf437d1551ff80ae33b4274fb60a1ade2d6c9da4 ...[0;m
+[32;1m$ docker login -u $REGISTRY_USER -p $REGISTRY_PASS[0;m
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[32;1m$ docker build -t $IMAGE_NAME:$IMAGE_TAG .[0;m
+Sending build context to Docker daemon  202.8kB
+Step 1/10 : FROM python:3.11.3
+3.11.3: Pulling from library/python
+bd73737482dd: Pulling fs layer
+6710592d62aa: Pulling fs layer
+75256935197e: Pulling fs layer
+c1e5026c6457: Pulling fs layer
+f0016544b8b9: Pulling fs layer
+1d58eee51ff2: Pulling fs layer
+93dc7b704cd1: Pulling fs layer
+caefdefa531e: Pulling fs layer
+f0016544b8b9: Waiting
+1d58eee51ff2: Waiting
+93dc7b704cd1: Waiting
+caefdefa531e: Waiting
+c1e5026c6457: Waiting
+6710592d62aa: Verifying Checksum
+6710592d62aa: Download complete
+75256935197e: Verifying Checksum
+75256935197e: Download complete
+bd73737482dd: Verifying Checksum
+bd73737482dd: Download complete
+f0016544b8b9: Verifying Checksum
+f0016544b8b9: Download complete
+93dc7b704cd1: Verifying Checksum
+93dc7b704cd1: Download complete
+1d58eee51ff2: Verifying Checksum
+1d58eee51ff2: Download complete
+caefdefa531e: Verifying Checksum
+caefdefa531e: Download complete
+c1e5026c6457: Verifying Checksum
+c1e5026c6457: Download complete
+bd73737482dd: Pull complete
+6710592d62aa: Pull complete
+75256935197e: Pull complete
+c1e5026c6457: Pull complete
+f0016544b8b9: Pull complete
+1d58eee51ff2: Pull complete
+93dc7b704cd1: Pull complete
+caefdefa531e: Pull complete
+Digest: sha256:3a619e3c96fd4c5fc5e1998fd4dcb1f1403eb90c4c6409c70d7e80b9468df7df
+Status: Downloaded newer image for python:3.11.3
+ ---> 0a6cd0db41a4
+Step 2/10 : ENV PYTHONDONTWRITEBYTECODE 1
+ ---> Running in 3620bbb04f67
+Removing intermediate container 3620bbb04f67
+ ---> 3e5d3bd7d9e6
+Step 3/10 : ENV PYTHONUNBUFFERED 1
+ ---> Running in 72f311c94596
+Removing intermediate container 72f311c94596
+ ---> 48ef82a80f21
+Step 4/10 : WORKDIR /app
+ ---> Running in 3dc97f482c47
+Removing intermediate container 3dc97f482c47
+ ---> 2245d7e03a6c
+Step 5/10 : COPY . /app
+ ---> ed91bc3c6159
+Step 6/10 : RUN pip install --no-cache-dir -r requirements.txt
+ ---> Running in 6794383367e8
+Collecting django==4.2
+  Downloading Django-4.2-py3-none-any.whl (8.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.0/8.0 MB 74.0 MB/s eta 0:00:00
+Collecting django-environ==0.10.0
+  Downloading django_environ-0.10.0-py2.py3-none-any.whl (19 kB)
+Collecting djangorestframework==3.14.0
+  Downloading djangorestframework-3.14.0-py3-none-any.whl (1.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 222.6 MB/s eta 0:00:00
+Collecting asgiref<4,>=3.6.0
+  Downloading asgiref-3.7.2-py3-none-any.whl (24 kB)
+Collecting sqlparse>=0.3.1
+  Downloading sqlparse-0.4.4-py3-none-any.whl (41 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.2/41.2 kB 188.0 MB/s eta 0:00:00
+Collecting pytz
+  Downloading pytz-2023.3.post1-py2.py3-none-any.whl (502 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 502.5/502.5 kB 220.1 MB/s eta 0:00:00
+Installing collected packages: pytz, sqlparse, django-environ, asgiref, django, djangorestframework
+Successfully installed asgiref-3.7.2 django-4.2 django-environ-0.10.0 djangorestframework-3.14.0 pytz-2023.3.post1 sqlparse-0.4.4
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0m[91m
+[notice] A new release of pip available: 22.3.1 -> 23.3.2
+[notice] To update, run: pip install --upgrade pip
+[0mRemoving intermediate container 6794383367e8
+ ---> 5ae3cf0e3203
+Step 7/10 : RUN python manage.py makemigrations
+ ---> Running in 8b5fb104fe1d
+No changes detected
+Removing intermediate container 8b5fb104fe1d
+ ---> 239b15c51f9e
+Step 8/10 : RUN python manage.py migrate
+ ---> Running in dfc0d6fc1305
+Operations to perform:
+  Apply all migrations: admin, api, auth, contenttypes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying api.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+Removing intermediate container dfc0d6fc1305
+ ---> 182fa53dde3e
+Step 9/10 : EXPOSE 8000
+ ---> Running in adcf74880c0c
+Removing intermediate container adcf74880c0c
+ ---> 9d0d52550741
+Step 10/10 : CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+ ---> Running in de7258ca5ec5
+Removing intermediate container de7258ca5ec5
+ ---> 6128956d14c7
+Successfully built 6128956d14c7
+Successfully tagged ale0072/devsu:python-app-1
+[32;1m$ docker push $IMAGE_NAME:$IMAGE_TAG[0;m
+The push refers to repository [docker.io/ale0072/devsu]
+d0d43af14db2: Preparing
+1015f3d9c849: Preparing
+4d02b3c0dc4e: Preparing
+88f7147a8a58: Preparing
+00f1f01aaa28: Preparing
+30563becc00e: Preparing
+71c951de0520: Preparing
+0eb817dfc4e1: Preparing
+ea9a66bcf3b5: Preparing
+d140420135e3: Preparing
+b4b4f5c5ff9f: Preparing
+b0df24a95c80: Preparing
+974e52a24adf: Preparing
+30563becc00e: Waiting
+71c951de0520: Waiting
+0eb817dfc4e1: Waiting
+ea9a66bcf3b5: Waiting
+d140420135e3: Waiting
+b4b4f5c5ff9f: Waiting
+b0df24a95c80: Waiting
+974e52a24adf: Waiting
+1015f3d9c849: Pushed
+00f1f01aaa28: Pushed
+30563becc00e: Layer already exists
+d0d43af14db2: Pushed
+71c951de0520: Layer already exists
+0eb817dfc4e1: Layer already exists
+ea9a66bcf3b5: Layer already exists
+d140420135e3: Layer already exists
+b4b4f5c5ff9f: Layer already exists
+b0df24a95c80: Layer already exists
+88f7147a8a58: Pushed
+974e52a24adf: Layer already exists
+4d02b3c0dc4e: Pushed
+python-app-1: digest: sha256:d3c891c099fd32277aeb2da17a4cbb3aaeae5a415d045019b5d219a08277b276 size: 3050
+section_end:1703961745:step_script[0Ksection_start:1703961745:cleanup_file_variables[0K[0K[36;1mCleaning up project directory and file based variables[0;m[0;m
+section_end:1703961746:cleanup_file_variables[0K[32;1mJob succeeded[0;m

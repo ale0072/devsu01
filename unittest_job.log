@@ -1,0 +1,58 @@
+[0KRunning with gitlab-runner 16.6.0~beta.105.gd2263193 (d2263193)[0;m
+[0K  on blue-2.saas-linux-small-amd64.runners-manager.gitlab.com/default XxUrkriX, system ID: s_f46a988edce4[0;m
+[0K  feature flags: FF_USE_IMPROVED_URL_MASKING:true[0;m
+section_start:1703961493:prepare_executor[0K[0K[36;1mPreparing the "docker+machine" executor[0;m[0;m
+[0KUsing Docker executor with image python:3.11-bullseye ...[0;m
+[0KPulling docker image python:3.11-bullseye ...[0;m
+[0KUsing docker image sha256:6d218d86187bca83fd334eac40fef9f6c7cebcad8dc2cf5b5be8f6f4b4c3e0df for python:3.11-bullseye with digest python@sha256:4d3f66f56daa3b8a3474daf991b2a743c2bed79fc2fefde35417b4a5c9c1180a ...[0;m
+section_end:1703961512:prepare_executor[0Ksection_start:1703961512:prepare_script[0K[0K[36;1mPreparing environment[0;m[0;m
+Running on runner-xxurkrix-project-53368635-concurrent-0 via runner-xxurkrix-s-l-s-amd64-1703961453-94fefe29...
+section_end:1703961516:prepare_script[0Ksection_start:1703961516:get_sources[0K[0K[36;1mGetting source from Git repository[0;m[0;m
+[32;1mFetching changes with git depth set to 20...[0;m
+Initialized empty Git repository in /builds/ale0072/devsutest01/.git/
+[32;1mCreated fresh repository.[0;m
+[32;1mChecking out 20220591 as detached HEAD (ref is master)...[0;m
+
+[32;1mSkipping Git submodules setup[0;m
+[32;1m$ git remote set-url origin "${CI_REPOSITORY_URL}"[0;m
+section_end:1703961517:get_sources[0Ksection_start:1703961517:step_script[0K[0K[36;1mExecuting "step_script" stage of the job script[0;m[0;m
+[0KUsing docker image sha256:6d218d86187bca83fd334eac40fef9f6c7cebcad8dc2cf5b5be8f6f4b4c3e0df for python:3.11-bullseye with digest python@sha256:4d3f66f56daa3b8a3474daf991b2a743c2bed79fc2fefde35417b4a5c9c1180a ...[0;m
+[32;1m$ pip install -r requirements.txt[0;m
+Collecting django==4.2 (from -r requirements.txt (line 1))
+  Downloading Django-4.2-py3-none-any.whl (8.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.0/8.0 MB 61.9 MB/s eta 0:00:00
+Collecting django-environ==0.10.0 (from -r requirements.txt (line 2))
+  Downloading django_environ-0.10.0-py2.py3-none-any.whl (19 kB)
+Collecting djangorestframework==3.14.0 (from -r requirements.txt (line 3))
+  Downloading djangorestframework-3.14.0-py3-none-any.whl (1.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 79.5 MB/s eta 0:00:00
+Collecting asgiref<4,>=3.6.0 (from django==4.2->-r requirements.txt (line 1))
+  Obtaining dependency information for asgiref<4,>=3.6.0 from https://files.pythonhosted.org/packages/9b/80/b9051a4a07ad231558fcd8ffc89232711b4e618c15cb7a392a17384bbeef/asgiref-3.7.2-py3-none-any.whl.metadata
+  Downloading asgiref-3.7.2-py3-none-any.whl.metadata (9.2 kB)
+Collecting sqlparse>=0.3.1 (from django==4.2->-r requirements.txt (line 1))
+  Downloading sqlparse-0.4.4-py3-none-any.whl (41 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.2/41.2 kB 7.1 MB/s eta 0:00:00
+Collecting pytz (from djangorestframework==3.14.0->-r requirements.txt (line 3))
+  Obtaining dependency information for pytz from https://files.pythonhosted.org/packages/32/4d/aaf7eff5deb402fd9a24a1449a8119f00d74ae9c2efa79f8ef9994261fc2/pytz-2023.3.post1-py2.py3-none-any.whl.metadata
+  Downloading pytz-2023.3.post1-py2.py3-none-any.whl.metadata (22 kB)
+Downloading asgiref-3.7.2-py3-none-any.whl (24 kB)
+Downloading pytz-2023.3.post1-py2.py3-none-any.whl (502 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 502.5/502.5 kB 54.8 MB/s eta 0:00:00
+Installing collected packages: pytz, sqlparse, django-environ, asgiref, django, djangorestframework
+Successfully installed asgiref-3.7.2 django-4.2 django-environ-0.10.0 djangorestframework-3.14.0 pytz-2023.3.post1 sqlparse-0.4.4
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 23.2.1 -> 23.3.2
+[notice] To update, run: pip install --upgrade pip
+[32;1m$ python manage.py test[0;m
+Creating test database for alias 'default'...
+Found 3 test(s).
+System check identified no issues (0 silenced).
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.010s
+
+OK
+Destroying test database for alias 'default'...
+section_end:1703961523:step_script[0Ksection_start:1703961523:cleanup_file_variables[0K[0K[36;1mCleaning up project directory and file based variables[0;m[0;m
+section_end:1703961523:cleanup_file_variables[0K[32;1mJob succeeded[0;m

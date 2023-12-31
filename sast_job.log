@@ -1,0 +1,34 @@
+[0KRunning with gitlab-runner 16.6.0~beta.105.gd2263193 (d2263193)[0;m
+[0K  on blue-4.saas-linux-small-amd64.runners-manager.gitlab.com/default J2nyww-s, system ID: s_cf1798852952[0;m
+[0K  feature flags: FF_USE_IMPROVED_URL_MASKING:true[0;m
+section_start:1703961493:prepare_executor[0K[0K[36;1mPreparing the "docker+machine" executor[0;m[0;m
+[0KUsing Docker executor with image registry.gitlab.com/security-products/semgrep:4 ...[0;m
+[0KAuthenticating with credentials from job payload (GitLab Registry)[0;m
+[0KPulling docker image registry.gitlab.com/security-products/semgrep:4 ...[0;m
+[0KUsing docker image sha256:0dadc07f5178ba08d94bdb752762ea9067df8cb6138ce982b6768f0c5b6570d8 for registry.gitlab.com/security-products/semgrep:4 with digest registry.gitlab.com/security-products/semgrep@sha256:ed335c42a61fcecd6caf0f2d7a57b36410d44317466020d2d31741235ca2ab65 ...[0;m
+section_end:1703961502:prepare_executor[0Ksection_start:1703961502:prepare_script[0K[0K[36;1mPreparing environment[0;m[0;m
+Running on runner-j2nyww-s-project-53368635-concurrent-0 via runner-j2nyww-s-s-l-s-amd64-1703961448-fd84011c...
+section_end:1703961505:prepare_script[0Ksection_start:1703961505:get_sources[0K[0K[36;1mGetting source from Git repository[0;m[0;m
+[32;1mFetching changes with git depth set to 20...[0;m
+Initialized empty Git repository in /builds/ale0072/devsutest01/.git/
+[32;1mCreated fresh repository.[0;m
+[32;1mChecking out 20220591 as detached HEAD (ref is master)...[0;m
+
+[32;1mSkipping Git submodules setup[0;m
+[32;1m$ git remote set-url origin "${CI_REPOSITORY_URL}"[0;m
+section_end:1703961506:get_sources[0Ksection_start:1703961506:step_script[0K[0K[36;1mExecuting "step_script" stage of the job script[0;m[0;m
+[0KUsing docker image sha256:0dadc07f5178ba08d94bdb752762ea9067df8cb6138ce982b6768f0c5b6570d8 for registry.gitlab.com/security-products/semgrep:4 with digest registry.gitlab.com/security-products/semgrep@sha256:ed335c42a61fcecd6caf0f2d7a57b36410d44317466020d2d31741235ca2ab65 ...[0;m
+[32;1m$ /analyzer run[0;m
+[0;32m[INFO] [Semgrep] [2023-12-30T18:38:26Z] ▶ GitLab Semgrep analyzer v4.10.1[0m
+[0;32m[INFO] [Semgrep] [2023-12-30T18:38:26Z] ▶ Detecting project[0m
+[0;32m[INFO] [Semgrep] [2023-12-30T18:38:26Z] ▶ Analyzer will attempt to analyze all projects in the repository[0m
+[0;32m[INFO] [Semgrep] [2023-12-30T18:38:26Z] ▶ Running analyzer[0m
+[0;32m[INFO] [Semgrep] [2023-12-30T18:38:33Z] ▶ Creating report[0m
+section_end:1703961513:step_script[0Ksection_start:1703961513:upload_artifacts_on_success[0K[0K[36;1mUploading artifacts for successful job[0;m[0;m
+[32;1mUploading artifacts...[0;m
+gl-sast-report.json: found 1 matching artifact files and directories[0;m 
+[0;33mWARNING: Upload request redirected                [0;m  [0;33mlocation[0;m=https://gitlab.com/api/v4/jobs/5839044939/artifacts?artifact_format=raw&artifact_type=sast [0;33mnew-url[0;m=https://gitlab.com
+[0;33mWARNING: Retrying...                              [0;m  [0;33mcontext[0;m=artifacts-uploader [0;33merror[0;m=request redirected
+Uploading artifacts as "sast" to coordinator... 201 Created[0;m  id[0;m=5839044939 responseStatus[0;m=201 Created token[0;m=65_sCNRm
+section_end:1703961515:upload_artifacts_on_success[0Ksection_start:1703961515:cleanup_file_variables[0K[0K[36;1mCleaning up project directory and file based variables[0;m[0;m
+section_end:1703961516:cleanup_file_variables[0K[32;1mJob succeeded[0;m

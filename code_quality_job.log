@@ -1,0 +1,38 @@
+[0KRunning with gitlab-runner 16.6.0~beta.105.gd2263193 (d2263193)[0;m
+[0K  on blue-1.saas-linux-small.runners-manager.gitlab.com/default j1aLDqxS, system ID: s_ccdc2f364be8[0;m
+[0K  feature flags: FF_USE_IMPROVED_URL_MASKING:true[0;m
+section_start:1703961493:prepare_executor[0K[0K[36;1mPreparing the "docker+machine" executor[0;m[0;m
+[0KUsing Docker executor with image docker:20.10.12 ...[0;m
+[0KStarting service docker:20.10.12-dind ...[0;m
+[0KPulling docker image docker:20.10.12-dind ...[0;m
+[0KUsing docker image sha256:1a42336ff683d7dadd320ea6fe9d93a5b101474346302d23f96c9b4546cb414d for docker:20.10.12-dind with digest docker@sha256:6f2ae4a5fd85ccf85cdd829057a34ace894d25d544e5e4d9f2e7109297fedf8d ...[0;m
+[0KWaiting for services to be up and running (timeout 30 seconds)...[0;m
+[0KPulling docker image docker:20.10.12 ...[0;m
+[0KUsing docker image sha256:15a9bc7c6340df2ac9d6c8196ca1d905180ddf2ca8b29a8d98f5422e2e5ccf85 for docker:20.10.12 with digest docker@sha256:a729cce205a05b0b86dc8dca87823efaffc3f74979fe7dc86a707c2fbf631b61 ...[0;m
+section_end:1703961507:prepare_executor[0Ksection_start:1703961507:prepare_script[0K[0K[36;1mPreparing environment[0;m[0;m
+Running on runner-j1aldqxs-project-53368635-concurrent-0 via runner-j1aldqxs-s-l-s-amd64-1703961440-9c0d9f0d...
+section_end:1703961508:prepare_script[0Ksection_start:1703961508:get_sources[0K[0K[36;1mGetting source from Git repository[0;m[0;m
+[32;1mFetching changes with git depth set to 20...[0;m
+Initialized empty Git repository in /builds/ale0072/devsutest01/.git/
+[32;1mCreated fresh repository.[0;m
+[32;1mChecking out 20220591 as detached HEAD (ref is master)...[0;m
+
+[32;1mSkipping Git submodules setup[0;m
+[32;1m$ git remote set-url origin "${CI_REPOSITORY_URL}"[0;m
+section_end:1703961509:get_sources[0Ksection_start:1703961509:step_script[0K[0K[36;1mExecuting "step_script" stage of the job script[0;m[0;m
+[0KUsing docker image sha256:15a9bc7c6340df2ac9d6c8196ca1d905180ddf2ca8b29a8d98f5422e2e5ccf85 for docker:20.10.12 with digest docker@sha256:a729cce205a05b0b86dc8dca87823efaffc3f74979fe7dc86a707c2fbf631b61 ...[0;m
+[32;1m$ export SOURCE_CODE=$PWD[0;m
+[32;1m$ if ! docker info &>/dev/null; then # collapsed multi-line command[0;m
+[32;1m$ function propagate_env_vars() { # collapsed multi-line command[0;m
+[32;1m$ if [ -n "$CODECLIMATE_REGISTRY_USERNAME" ] && [ -n "$CODECLIMATE_REGISTRY_PASSWORD" ] && [ -n "$CODECLIMATE_PREFIX" ]; then # collapsed multi-line command[0;m
+[32;1m$ docker pull --quiet "$CODE_QUALITY_IMAGE"[0;m
+registry.gitlab.com/gitlab-org/ci-cd/codequality:0.96.0
+[32;1m$ docker run --rm \ # collapsed multi-line command[0;m
+section_end:1703961679:step_script[0Ksection_start:1703961679:upload_artifacts_on_success[0K[0K[36;1mUploading artifacts for successful job[0;m[0;m
+[32;1mUploading artifacts...[0;m
+gl-code-quality-report.json: found 1 matching artifact files and directories[0;m 
+[0;33mWARNING: Upload request redirected                [0;m  [0;33mlocation[0;m=https://gitlab.com/api/v4/jobs/5839044940/artifacts?artifact_format=raw&artifact_type=codequality&expire_in=1+week [0;33mnew-url[0;m=https://gitlab.com
+[0;33mWARNING: Retrying...                              [0;m  [0;33mcontext[0;m=artifacts-uploader [0;33merror[0;m=request redirected
+Uploading artifacts as "codequality" to coordinator... 201 Created[0;m  id[0;m=5839044940 responseStatus[0;m=201 Created token[0;m=65_UDzN7
+section_end:1703961682:upload_artifacts_on_success[0Ksection_start:1703961682:cleanup_file_variables[0K[0K[36;1mCleaning up project directory and file based variables[0;m[0;m
+section_end:1703961682:cleanup_file_variables[0K[32;1mJob succeeded[0;m
