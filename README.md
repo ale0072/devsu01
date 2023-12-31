@@ -1,13 +1,14 @@
 
-![Alt Text](/DiagramaPipeline.PNG)
+# Devsu's Practical Exercise 
+For a comprehensive overview of this resolution, please refer to the detailed report available in this repository. 
 
+You can access the report by opening the Reporte.pdf file. 
 
+This document describes all steps taken to accomplish the assigned tasks, the results achieved, and the conclusions.
 
-# Demo Devops Python
+## Resolution Diagrama
+![GitLab](/DiagramaPipeline.PNG)
 
-This is a simple application to be used in the technical test of DevOps.
-
-## Getting Started
 
 ### Prerequisites
 
