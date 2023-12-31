@@ -1,0 +1,117 @@
+[0KRunning with gitlab-runner 16.6.0~beta.105.gd2263193 (d2263193)[0;m
+[0K  on blue-2.saas-linux-small-amd64.runners-manager.gitlab.com/default XxUrkriX, system ID: s_f46a988edce4[0;m
+[0K  feature flags: FF_USE_IMPROVED_URL_MASKING:true[0;m
+section_start:1703961749:prepare_executor[0K[0K[36;1mPreparing the "docker+machine" executor[0;m[0;m
+[0KUsing Docker executor with image ruby:3.1 ...[0;m
+[0KPulling docker image ruby:3.1 ...[0;m
+[0KUsing docker image sha256:fad41ae0fc09e74ff71e164a4bf01738700384503af3406310e79dbd4afb39a6 for ruby:3.1 with digest ruby@sha256:2358675ce44b509c9a2f3be6e31ebbdf3cc62996231c73d975640d12d600677a ...[0;m
+section_end:1703961768:prepare_executor[0Ksection_start:1703961768:prepare_script[0K[0K[36;1mPreparing environment[0;m[0;m
+Running on runner-xxurkrix-project-53368635-concurrent-0 via runner-xxurkrix-s-l-s-amd64-1703961704-7ac9b6b4...
+section_end:1703961773:prepare_script[0Ksection_start:1703961773:get_sources[0K[0K[36;1mGetting source from Git repository[0;m[0;m
+[32;1mFetching changes with git depth set to 20...[0;m
+Initialized empty Git repository in /builds/ale0072/devsutest01/.git/
+[32;1mCreated fresh repository.[0;m
+[32;1mChecking out 20220591 as detached HEAD (ref is master)...[0;m
+
+[32;1mSkipping Git submodules setup[0;m
+[32;1m$ git remote set-url origin "${CI_REPOSITORY_URL}"[0;m
+section_end:1703961774:get_sources[0Ksection_start:1703961774:step_script[0K[0K[36;1mExecuting "step_script" stage of the job script[0;m[0;m
+[0KUsing docker image sha256:fad41ae0fc09e74ff71e164a4bf01738700384503af3406310e79dbd4afb39a6 for ruby:3.1 with digest ruby@sha256:2358675ce44b509c9a2f3be6e31ebbdf3cc62996231c73d975640d12d600677a ...[0;m
+[32;1m$ chmod 400 $SSH_KEY[0;m
+[32;1m$ ssh -o StrictHostKeyChecking=no -i $SSH_KEY $EC2_HOST " sudo su -c ' docker login -u $REGISTRY_USER -p $REGISTRY_PASS && docker pull $IMAGE_NAME:$IMAGE_TAG && exit' && minikube start --driver=docker && kubectl apply -f kubernetes-deployment.yml "[0;m
+Warning: Permanently added 'ec2-100-26-227-152.compute-1.amazonaws.com' (ED25519) to the list of known hosts.
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+python-app-1: Pulling from ale0072/devsu
+bd73737482dd: Pulling fs layer
+6710592d62aa: Pulling fs layer
+75256935197e: Pulling fs layer
+c1e5026c6457: Pulling fs layer
+f0016544b8b9: Pulling fs layer
+1d58eee51ff2: Pulling fs layer
+93dc7b704cd1: Pulling fs layer
+caefdefa531e: Pulling fs layer
+481799c81ac1: Pulling fs layer
+8a9e8023fc8b: Pulling fs layer
+a1c8f1db2c3d: Pulling fs layer
+ec9d71385e88: Pulling fs layer
+737685ea4542: Pulling fs layer
+1d58eee51ff2: Waiting
+93dc7b704cd1: Waiting
+caefdefa531e: Waiting
+481799c81ac1: Waiting
+c1e5026c6457: Waiting
+f0016544b8b9: Waiting
+8a9e8023fc8b: Waiting
+a1c8f1db2c3d: Waiting
+ec9d71385e88: Waiting
+737685ea4542: Waiting
+6710592d62aa: Verifying Checksum
+6710592d62aa: Download complete
+bd73737482dd: Verifying Checksum
+bd73737482dd: Download complete
+f0016544b8b9: Verifying Checksum
+f0016544b8b9: Download complete
+75256935197e: Verifying Checksum
+75256935197e: Download complete
+93dc7b704cd1: Verifying Checksum
+93dc7b704cd1: Download complete
+1d58eee51ff2: Verifying Checksum
+1d58eee51ff2: Download complete
+481799c81ac1: Verifying Checksum
+481799c81ac1: Download complete
+8a9e8023fc8b: Verifying Checksum
+8a9e8023fc8b: Download complete
+caefdefa531e: Verifying Checksum
+caefdefa531e: Download complete
+a1c8f1db2c3d: Verifying Checksum
+a1c8f1db2c3d: Download complete
+ec9d71385e88: Verifying Checksum
+ec9d71385e88: Download complete
+737685ea4542: Verifying Checksum
+737685ea4542: Download complete
+c1e5026c6457: Verifying Checksum
+c1e5026c6457: Download complete
+bd73737482dd: Pull complete
+6710592d62aa: Pull complete
+75256935197e: Pull complete
+c1e5026c6457: Pull complete
+f0016544b8b9: Pull complete
+1d58eee51ff2: Pull complete
+93dc7b704cd1: Pull complete
+caefdefa531e: Pull complete
+481799c81ac1: Pull complete
+8a9e8023fc8b: Pull complete
+a1c8f1db2c3d: Pull complete
+ec9d71385e88: Pull complete
+737685ea4542: Pull complete
+Digest: sha256:d3c891c099fd32277aeb2da17a4cbb3aaeae5a415d045019b5d219a08277b276
+Status: Downloaded newer image for ale0072/devsu:python-app-1
+docker.io/ale0072/devsu:python-app-1
+* minikube v1.32.0 on Ubuntu 22.04 (xen/amd64)
+* Using the docker driver based on user configuration
+* Using Docker driver with root privileges
+* Starting control plane node minikube in cluster minikube
+* Pulling base image ...
+* Downloading Kubernetes v1.28.3 preload ...
+    > gcr.io/k8s-minikube/kicbase...:  1.44 MiB / 453.90 MiB [>_] 0.32% ? p/s ?    > gcr.io/k8s-minikube/kicbase...:  14.06 MiB / 453.90 MiB [>] 3.10% ? p/s ?    > gcr.io/k8s-minikube/kicbase...:  25.77 MiB / 453.90 MiB [>] 5.68% ? p/s ?    > gcr.io/k8s-minikube/kicbase...:  35.88 MiB / 453.90 MiB  7.90% 57.45 MiB     > gcr.io/k8s-minikube/kicbase...:  44.99 MiB / 453.90 MiB  9.91% 57.45 MiB     > gcr.io/k8s-minikube/kicbase...:  52.49 MiB / 453.90 MiB  11.56% 57.45 MiB    > gcr.io/k8s-minikube/kicbase...:  61.85 MiB / 453.90 MiB  13.63% 56.53 MiB    > gcr.io/k8s-minikube/kicbase...:  71.22 MiB / 453.90 MiB  15.69% 56.53 MiB    > gcr.io/k8s-minikube/kicbase...:  84.36 MiB / 453.90 MiB  18.59% 56.53 MiB    > gcr.io/k8s-minikube/kicbase...:  93.20 MiB / 453.90 MiB  20.53% 56.26 MiB    > gcr.io/k8s-minikube/kicbase...:  105.17 MiB / 453.90 MiB  23.17% 56.26 Mi    > gcr.io/k8s-minikube/kicbase...:  116.13 MiB / 453.90 MiB  25.58% 56.26 Mi    > gcr.io/k8s-minikube/kicbase...:  126.02 MiB / 453.90 MiB  27.76% 56.16 Mi    > gcr.io/k8s-minikube/kicbase...:  139.50 MiB / 453.90 MiB  30.73% 56.16 Mi    > gcr.io/k8s-minikube/kicbase...:  148.36 MiB / 453.90 MiB  32.69% 56.16 Mi    > gcr.io/k8s-minikube/kicbase...:  159.31 MiB / 453.90 MiB  35.10% 56.11 Mi    > gcr.io/k8s-minikube/kicbase...:  172.47 MiB / 453.90 MiB  38.00% 56.11 Mi    > gcr.io/k8s-minikube/kicbase...:  181.39 MiB / 453.90 MiB  39.96% 56.11 Mi    > gcr.io/k8s-minikube/kicbase...:  191.92 MiB / 453.90 MiB  42.28% 55.99 Mi    > gcr.io/k8s-minikube/kicbase...:  203.08 MiB / 453.90 MiB  44.74% 55.99 Mi    > gcr.io/k8s-minikube/kicbase...:  212.03 MiB / 453.90 MiB  46.71% 55.99 Mi    > gcr.io/k8s-minikube/kicbase...:  222.81 MiB / 453.90 MiB  49.09% 55.71 Mi    > gcr.io/k8s-minikube/kicbase...:  233.75 MiB / 453.90 MiB  51.50% 55.71 Mi    > gcr.io/k8s-minikube/kicbase...:  245.05 MiB / 453.90 MiB  53.99% 55.71 Mi    > gcr.io/k8s-minikube/kicbase...:  256.96 MiB / 453.90 MiB  56.61% 55.79 Mi    > gcr.io/k8s-minikube/kicbase...:  268.19 MiB / 453.90 MiB  59.09% 55.79 Mi    > gcr.io/k8s-minikube/kicbase...:  278.53 MiB / 453.90 MiB  61.36% 55.79 Mi    > gcr.io/k8s-minikube/kicbase...:  296.00 MiB / 453.90 MiB  65.21% 56.38 Mi    > gcr.io/k8s-minikube/kicbase...:  308.50 MiB / 453.90 MiB  67.97% 56.38 Mi    > gcr.io/k8s-minikube/kicbase...:  315.49 MiB / 453.90 MiB  69.51% 56.38 Mi    > gcr.io/k8s-minikube/kicbase...:  326.28 MiB / 453.90 MiB  71.88% 56.00 Mi    > gcr.io/k8s-minikube/kicbase...:  344.83 MiB / 453.90 MiB  75.97% 56.00 Mi    > gcr.io/k8s-minikube/kicbase...:  371.08 MiB / 453.90 MiB  81.75% 56.00 Mi    > gcr.io/k8s-minikube/kicbase...:  391.28 MiB / 453.90 MiB  86.21% 59.38 Mi    > gcr.io/k8s-minikube/kicbase...:  414.42 MiB / 453.90 MiB  91.30% 59.38 Mi    > gcr.io/k8s-minikube/kicbase...:  433.80 MiB / 453.90 MiB  95.57% 59.38 Mi    > gcr.io/k8s-minikube/kicbase...:  453.90 MiB / 453.90 MiB  100.00% 63.30 M* Creating docker container (CPUs=2, Memory=2200MB) ...
+* Preparing Kubernetes v1.28.3 on Docker 24.0.7 ...
+  - Generating certificates and keys ...
+  - Booting up control plane ...
+  - Configuring RBAC rules ...
+* Configuring bridge CNI (Container Networking Interface) ...
+  - Using image gcr.io/k8s-minikube/storage-provisioner:v5
+* Verifying Kubernetes components...
+* Enabled addons: storage-provisioner, default-storageclass
+* Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+deployment.apps/demo-devops-python-deployment created
+service/demo-devops-python-service created
+configmap/demo-devops-python-configmap created
+secret/demo-devops-python-secret created
+horizontalpodautoscaler.autoscaling/demo-devops-python-hpa created
+section_end:1703961891:step_script[0Ksection_start:1703961891:cleanup_file_variables[0K[0K[36;1mCleaning up project directory and file based variables[0;m[0;m
+section_end:1703961892:cleanup_file_variables[0K[32;1mJob succeeded[0;m
