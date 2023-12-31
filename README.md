@@ -1,3 +1,8 @@
+
+![Alt Text](/DiagramaPipeline.PNG)
+
+
+
 # Demo Devops Python
 
 This is a simple application to be used in the technical test of DevOps.
